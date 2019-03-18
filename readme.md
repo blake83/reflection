@@ -1,4 +1,5 @@
 # Reflection
-## Wrapper for reflection functionality that aims to simplify static analysis.
+Value objects for classes and interfaces.
 
-### This project is in early phases of development, so expect BC breaking all the time.
+### Keep in mind!
+**This project is in early phases of development, so expect BC breaking all the time.**
