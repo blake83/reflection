@@ -1,0 +1,15 @@
+{
+    "name": "comquer/class-name",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "7.5.x-dev"
+    },
+    "authors": [
+        {
+            "name": "Jakub Giminski",
+            "email": "jakubgiminski@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
