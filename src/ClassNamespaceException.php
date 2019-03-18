@@ -10,14 +10,4 @@ class ClassNamespaceException extends RuntimeException
     {
         return new self("Provided namespace $namespace is not a valid class");
     }
-
-    public static function missingInterface(ClassNamespace $class, ClassNamespace $interface): self
-    {
-
-    }
-
-    public static function missingMethod(ClassNamespace $class, string $method): self
-    {
-
-    }
 }
