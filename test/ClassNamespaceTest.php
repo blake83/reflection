@@ -2,13 +2,13 @@
 
 namespace Comquer\ReflectionTest;
 
-use Comquer\Reflection\ClassNamespace;
-use Comquer\Reflection\ClassNamespaceException;
+use Comquer\Reflection\ClassNamespace\ClassNamespace;
+use Comquer\Reflection\ClassNamespace\ClassNamespaceException;
 use Comquer\ReflectionTest\Fixture\Animal\Animal;
 use Comquer\ReflectionTest\Fixture\Animal\Cat;
 use Comquer\ReflectionTest\Fixture\Animal\PersianCat;
-use Comquer\ReflectionTest\Fixture\SampleClass;
-use Comquer\ReflectionTest\Fixture\SampleInterface;
+use Comquer\ReflectionTest\Fixture\Sample\SampleClass;
+use Comquer\ReflectionTest\Fixture\Sample\SampleInterface;
 use PHPUnit\Framework\TestCase;
 
 class ClassNamespaceTest extends TestCase

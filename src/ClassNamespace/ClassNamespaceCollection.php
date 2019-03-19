@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\Reflection;
+namespace Comquer\Reflection\ClassNamespace;
 
 use Comquer\Collection\Collection;
 use Comquer\Collection\Type;
