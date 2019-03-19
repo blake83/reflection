@@ -42,4 +42,17 @@ class ClassNamespaceTest extends TestCase
         self::assertTrue($parents->get(Cat::class)->equals(new ClassNamespace(Cat::class)));
         self::assertTrue($parents->get(Animal::class)->equals(new ClassNamespace(Animal::class)));
     }
+
+    /** @test */
+    function must_have_method()
+    {
+        $sampleClass = new ClassNamespace(SampleClass::class);
+        $sampleClass->mustHaveMethod('getSample');
+
+        $exception = ClassNamespaceException::missingMethod((string) $sampleClass, 'missingMethod');
+        $this->expectException(get_class($exception));
+        $this->expectExceptionMessage($exception->getMessage());
+
+        $sampleClass->mustHaveMethod('missingMethod');
+    }
 }

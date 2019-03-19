@@ -4,5 +4,8 @@ namespace Comquer\ReflectionTest\Fixture\Sample;
 
 class SampleClass
 {
-
+    public function getSample(): string
+    {
+        return 'sample';
+    }
 }

@@ -10,4 +10,9 @@ class ClassNamespaceException extends RuntimeException
     {
         return new self("Provided namespace $namespace is not a valid class");
     }
+
+    public static function missingMethod(string $namespace, string $methodName): self
+    {
+        return new self("Class $namespace must implement method $methodName");
+    }
 }

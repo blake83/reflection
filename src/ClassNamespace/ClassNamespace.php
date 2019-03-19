@@ -2,6 +2,8 @@
 
 namespace Comquer\Reflection\ClassNamespace;
 
+use ReflectionClass;
+
 class ClassNamespace
 {
     private $namespace;
@@ -19,6 +21,13 @@ class ClassNamespace
             $parents->add(new self($parent));
         }
         return $parents;
+    }
+
+    public function mustHaveMethod(string $methodName): void
+    {
+        if ((new ReflectionClass($this->namespace))->hasMethod($methodName) === false) {
+            throw ClassNamespaceException::missingMethod($this->namespace, $methodName);
+        }
     }
 
     public function equals(self $namespace): bool
