@@ -12,9 +12,23 @@ class ClassNamespace
         $this->namespace = $namespace;
     }
 
-    public static function fromObject(object $object): self
+    public function getParents(): ClassNamespaceCollection
     {
-        return new self(get_class($object));
+        $parents = new ClassNamespaceCollection();
+        foreach (class_parents((string) $this) as $parent) {
+            $parents->add(new self($parent));
+        }
+        return $parents;
+    }
+
+    public function equals(self $namespace): bool
+    {
+        return (string) $this === (string) $namespace;
+    }
+
+    public function __toString(): string
+    {
+        return $this->namespace;
     }
 
     private static function validateNamespace(string $namespace): void
@@ -24,8 +38,4 @@ class ClassNamespace
         }
     }
 
-    public function __toString(): string
-    {
-        return $this->namespace;
-    }
 }

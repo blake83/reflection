@@ -22,5 +22,7 @@
             "Comquer\\ReflectionTest\\": "test/"
         }
     },
-    "require": {}
+    "require": {
+        "comquer/collection": "dev-master"
+    }
 }
