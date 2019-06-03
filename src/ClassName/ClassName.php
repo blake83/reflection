@@ -6,7 +6,7 @@ use ReflectionClass;
 
 class ClassName
 {
-    /** @var string */
+    /** @var ReflectionClass e*/
     private $classReflection;
 
     public function __construct(string $className)
