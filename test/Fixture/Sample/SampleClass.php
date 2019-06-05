@@ -11,12 +11,12 @@ class SampleClass
         $this->sample = $sample;
     }
 
-    public function getSample(): string
+    public function getSample() : string
     {
         return $this->sample;
     }
 
-    public function setSample(string $sample): void
+    public function setSample(string $sample) : void
     {
         $this->sample = $sample;
     }

@@ -4,5 +4,4 @@ namespace Comquer\ReflectionTest\Fixture\Sample;
 
 interface SampleInterface
 {
-
 }

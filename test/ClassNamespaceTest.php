@@ -2,13 +2,12 @@
 
 namespace Comquer\ReflectionTest;
 
-use Comquer\Reflection\ClassNamespace\ClassNamespace;
-use Comquer\Reflection\ClassNamespace\ClassNamespaceException;
+use Comquer\Reflection\ClassName\ClassName;
+use Comquer\Reflection\ClassName\ClassNameException;
 use Comquer\ReflectionTest\Fixture\Animal\Animal;
 use Comquer\ReflectionTest\Fixture\Animal\Cat;
 use Comquer\ReflectionTest\Fixture\Animal\PersianCat;
 use Comquer\ReflectionTest\Fixture\Sample\SampleClass;
-use Comquer\ReflectionTest\Fixture\Sample\SampleInterface;
 use PHPUnit\Framework\TestCase;
 
 class ClassNamespaceTest extends TestCase
@@ -17,39 +16,41 @@ class ClassNamespaceTest extends TestCase
     function instantiate_with_valid_class_namespace()
     {
         self::assertInstanceOf(
-            ClassNamespace::class,
-            new ClassNamespace(SampleClass::class)
+            ClassName::class,
+            new ClassName(SampleClass::class)
         );
     }
 
     /** @test */
     function cant_instantiate_with_interface_namespace()
     {
-        $exception = ClassNamespaceException::invalidNamespace(SampleInterface::class);
+        $className = 'This\ClassDoes\Not\Exist';
+
+        $exception = ClassNameException::classDoesNotExist($className);
         $this->expectException(get_class($exception));
         $this->expectExceptionMessage($exception->getMessage());
 
-        new ClassNamespace(SampleInterface::class);
+        new ClassName($className);
     }
 
     /** @test */
     function get_parents()
     {
-        $persianCatClass = new ClassNamespace(PersianCat::class);
+        $persianCatClass = new ClassName(PersianCat::class);
         $parents = $persianCatClass->getParents();
 
         self::assertCount(2, $parents);
-        self::assertTrue($parents->get(Cat::class)->equals(new ClassNamespace(Cat::class)));
-        self::assertTrue($parents->get(Animal::class)->equals(new ClassNamespace(Animal::class)));
+        self::assertTrue($parents->get(Cat::class)->equals(new ClassName(Cat::class)));
+        self::assertTrue($parents->get(Animal::class)->equals(new ClassName(Animal::class)));
     }
 
     /** @test */
     function must_have_method()
     {
-        $sampleClass = new ClassNamespace(SampleClass::class);
+        $sampleClass = new ClassName(SampleClass::class);
         $sampleClass->mustHaveMethod('getSample');
 
-        $exception = ClassNamespaceException::missingMethod((string) $sampleClass, 'missingMethod');
+        $exception = ClassNameException::missingMethod((string) $sampleClass, 'missingMethod');
         $this->expectException(get_class($exception));
         $this->expectExceptionMessage($exception->getMessage());
 
