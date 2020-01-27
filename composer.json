@@ -23,6 +23,6 @@
         }
     },
     "require": {
-        "comquer/collection": "dev-master"
+        "blake83/collection": "dev-master"
     }
 }
